@@ -1,0 +1,8 @@
+{
+    "app_name": "my_app",
+    "app_module": "{{ cookiecutter.app_name | replace('_', ' ') | title | replace(' ', '') }}",
+    "author_name": "Sean Gong",
+    "project_version": "0.1.0",
+    "elixir_version": "1.18.2-otp-27",
+    "erlang_version": "27.2.4"
+}

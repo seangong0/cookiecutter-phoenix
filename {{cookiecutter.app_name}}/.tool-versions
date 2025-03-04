@@ -1,0 +1,2 @@
+erlang {{cookiecutter.erlang_version}}
+elixir {{cookiecutter.elixir_version}}
