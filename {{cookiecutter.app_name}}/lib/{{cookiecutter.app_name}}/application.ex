@@ -8,7 +8,6 @@ defmodule {{ cookiecutter.app_module }}.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      {{ cookiecutter.app_module }}Web.Telemetry,
       {{ cookiecutter.app_module }}.Repo,
       {{ '{' }}DNSCluster, query: Application.get_env(:{{ cookiecutter.app_name }}, :dns_cluster_query) || :ignore{{ '}' }},
       {{ '{' }}Phoenix.PubSub, name: {{ cookiecutter.app_module }}.PubSub{{ '}' }},

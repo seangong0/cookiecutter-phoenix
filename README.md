@@ -20,6 +20,7 @@ mix phx.new awesome_app --no-html \
 rm -rf lib/awesome_app_web/telemetry.ex
 sed -i '' '/telemetry/d' mix.exs
 sed -i '' '/Telemetry/d' lib/awesoem_app_web/endpoint.ex
+sed -i '' '/Telemetry/d' lib/awesoem_app/application.ex
 
 cat <<EOF > awesome_app/.tool-versions
 erlang {{cookiecutter.erlang_version}}
