@@ -11,5 +11,9 @@ sed -i '' "s/SIGNING_SALT/$SIGNING_SALT/g" lib/{{cookiecutter.app_name}}_web/end
 sed -i '' "s/LIVE_VIEW_SIGNING_SALT/$LIVE_VIEW_SIGNING_SALT/g" config/config.exs
 
 mix deps.get
+# setup oban
+if [ "{{cookiecutter.use_oban}}" = "y" ]; then
+    yes | mix oban.install 
+fi
 mix ecto.setup
 mix format

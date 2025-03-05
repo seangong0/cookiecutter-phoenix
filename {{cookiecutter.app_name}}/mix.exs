@@ -36,11 +36,13 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
       {:phoenix_ecto, "~> 4.5"},
       {:ecto_sql, "~> 3.10"},
       {:postgrex, ">= 0.0.0"},
-      {:telemetry_metrics, "~> 1.0"},
-      {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {%- if cookiecutter.use_oban == 'y' %}
+      {:oban, "~> {{ cookiecutter.oban_version }}"},
+      {:igniter, "~> 0.5", only: [:dev]},
+      {% endif -%}
     ]
   end
 

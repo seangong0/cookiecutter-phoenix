@@ -4,5 +4,7 @@
     "author_name": "Sean Gong",
     "project_version": "0.1.0",
     "elixir_version": "1.18.2-otp-27",
-    "erlang_version": "27.2.4"
+    "erlang_version": "27.2.4",
+    "use_oban": "y",
+    "oban_version": "2.19.2"
 }

@@ -16,6 +16,11 @@ mix phx.new awesome_app --no-html \
     --no-live \
     --no-mailer
 
+# 清理 telemetry
+rm -rf lib/awesome_app_web/telemetry.ex
+sed -i '' '/telemetry/d' mix.exs
+sed -i '' '/Telemetry/d' lib/awesoem_app_web/endpoint.ex
+
 cat <<EOF > awesome_app/.tool-versions
 erlang {{cookiecutter.erlang_version}}
 elixir {{cookiecutter.elixir_version}}
@@ -44,5 +49,5 @@ mod: {{'{'}}{{ cookiecutter.app_module }}.Application, []{{'}'}}
 ```bash
 #  请注意您的当前目录下不存在相同的项目名称
 rm -rf my_app
-cookiecutter ./cookiecutter-phoenix --no-input
+cookiecutter ./cookiecutter-phoenix --no-input use_oban=y
 ```
