@@ -7,7 +7,7 @@ defmodule {{ cookiecutter.app_module }}Web.Endpoint do
   @session_options [
     store: :cookie,
     key: "_{{ cookiecutter.app_name }}_key",
-    signing_salt: "SIGNING_SALT",
+    signing_salt: "{{ gen_secret(8) }}",
     same_site: "Lax"
   ]
 

@@ -32,6 +32,7 @@ find ./awesome_app -depth -name '*awesome_app*' -execdir sh -c 'mv "$1" "$(echo 
 find ./ -type f -exec perl -pi -e 's/AwesomeAppWeb/{{ cookiecutter.app_module }}Web/g' {} +
 
 find ./ -type f -exec perl -pi -e 's/AwesomeApp/{{ cookiecutter.app_module }}/g' {} +
+# 再使用 vscode 搜索替换功能检查是否有遗漏
 
 ```
 
@@ -41,7 +42,7 @@ find ./ -type f -exec perl -pi -e 's/AwesomeApp/{{ cookiecutter.app_module }}/g'
 mod: {{'{'}}{{ cookiecutter.app_module }}.Application, []{{'}'}}
 
 # 如果是大段代码，使用下面的形式
-{%- raw %}
+{% raw -%}
 {:telemetry_poller, measurements: periodic_measurements(), period: 10_000}
 {% endraw -%}
 ```

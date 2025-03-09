@@ -13,11 +13,16 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
+{% if cookiecutter.use_oban == 'y' -%}
+# config Oban
+config :{{ cookiecutter.app_name }}, Oban, testing: :manual
+{% endif -%}
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}Web.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "2WxFHOK5n5vhxE8v26sPggRvdfwvH6c/xouLRCXtUKD5hi0YWngADnvI7QEAG8mB",
+  secret_key_base: "{{ gen_secret(48) }}",
   server: false
 
 # Print only warnings and errors during test

@@ -23,7 +23,7 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}Web.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "SECRET_KEY_BASE",
+  secret_key_base: "{{ gen_secret(48) }}",
   watchers: []
 
 # ## SSL Support

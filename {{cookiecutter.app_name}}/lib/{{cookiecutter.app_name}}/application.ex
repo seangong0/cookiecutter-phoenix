@@ -9,6 +9,9 @@ defmodule {{ cookiecutter.app_module }}.Application do
   def start(_type, _args) do
     children = [
       {{ cookiecutter.app_module }}.Repo,
+      {% if cookiecutter.use_oban == 'y' -%}
+      {Oban, Application.fetch_env!(:{{ cookiecutter.app_name }}, Oban)},
+      {% endif -%}
       {{ '{' }}DNSCluster, query: Application.get_env(:{{ cookiecutter.app_name }}, :dns_cluster_query) || :ignore{{ '}' }},
       {{ '{' }}Phoenix.PubSub, name: {{ cookiecutter.app_module }}.PubSub{{ '}' }},
       # Start a worker by calling: {{ cookiecutter.app_module }}.Worker.start_link(arg)
