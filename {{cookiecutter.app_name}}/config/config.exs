@@ -14,11 +14,7 @@ config :{{ cookiecutter.app_name }},
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   migration_primary_key: [name: :id, type: :binary_id],
   migration_foreign_key: [column: :id, type: :binary_id],
-  migration_timestamps: [
-    type: :utc_datetime_usec,
-    inserted_at: :created_at,
-    updated_at: :changed_at
-  ]
+  migration_timestamps: [type: :utc_datetime_usec]
 
 {% if cookiecutter.use_oban == 'y' -%}
 # config Oban
