@@ -7,6 +7,14 @@ Cookiecutter phoenix app template
 ```bash
 pip3 install --user cookiecutter
 cookiecutter git@github.com:seangong0/cookiecutter-phoenix.git
+
+# schema
+# 例如
+use Ecto.Schema
+import Ecto.Changeset
+
+# 替换为
+use {{app_module}}.Schema
 ```
 
 ## Features
