@@ -7,5 +7,5 @@
     "erlang_version": "27.2.4",
     "use_oban": "y",
     "run_setup": "n",
-    "_extensions": ["local_extensions.GenSecretExtension"]
+    "_extensions": ["local_extensions.CustomExtension"]
 }

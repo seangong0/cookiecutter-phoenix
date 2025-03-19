@@ -2,6 +2,13 @@
 
 Cookiecutter phoenix app template
 
+## Usage
+
+```bash
+pip3 install --user cookiecutter
+cookiecutter git@github.com:seangong0/cookiecutter-phoenix.git
+```
+
 ## Features
 
 > Todo

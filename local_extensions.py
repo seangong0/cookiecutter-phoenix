@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from jinja2.ext import Extension
 import secrets
 import urllib.request
@@ -19,8 +20,8 @@ def latest_package_version(name: str) -> str:
         return deps_default_versions[name]
 
 
-class GenSecretExtension(Extension):
+class CustomExtension(Extension):
     def __init__(self, environment):
-        super(GenSecretExtension, self).__init__(environment)
+        super(CustomExtension, self).__init__(environment)
         environment.globals['gen_secret'] = lambda v: secrets.token_urlsafe(v)
         environment.globals['latest_version'] = latest_package_version
