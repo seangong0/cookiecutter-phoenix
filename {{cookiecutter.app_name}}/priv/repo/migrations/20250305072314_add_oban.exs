@@ -1,7 +1,7 @@
 defmodule MyApp.Repo.Migrations.AddOban do
   use Ecto.Migration
 
-  def up, do: Oban.Migration.up()
+  def up, do: Oban.Migration.up(prefix: "oban")
 
-  def down, do: Oban.Migration.down(version: 1)
+  def down, do: Oban.Migration.down(prefix: "oban", version: 1)
 end
