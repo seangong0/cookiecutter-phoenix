@@ -6,6 +6,7 @@
     "elixir_version": "1.18.2-otp-27",
     "erlang_version": "27.2.4",
     "use_oban": "y",
+    "use_req": "n",
     "use_mailer": "n",
     "run_setup": "n",
     "_extensions": [

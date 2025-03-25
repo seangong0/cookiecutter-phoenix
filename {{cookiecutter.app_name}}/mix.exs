@@ -47,6 +47,9 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
       {:swoosh, "{{ latest_version('swoosh') }}"},
       {:gen_smtp, "{{ latest_version('gen_smtp') }}"},
       {% endif -%}
+      {% if cookiecutter.use_req == 'y' -%}
+      {:req, "{{ latest_version('req') }}"},
+      {% endif -%}
     ]
   end
 
