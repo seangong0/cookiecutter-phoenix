@@ -18,6 +18,11 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
 config :{{ cookiecutter.app_name }}, Oban, testing: :manual
 {% endif -%}
 
+{% if cookiecutter.use_mailer == 'y' -%}
+# config swoosh
+config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Mailer, adapter: Swoosh.Adapters.Test
+{% endif -%}
+
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}Web.Endpoint,

@@ -39,8 +39,13 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
+      {:dotenvy, "{{ latest_version('dotenvy') }}"},
       {% if cookiecutter.use_oban == 'y' -%}
       {:oban, "{{ latest_version('oban') }}"},
+      {% endif -%}
+      {% if cookiecutter.use_mailer == 'y' -%}
+      {:swoosh, "{{ latest_version('swoosh') }}"},
+      {:gen_smtp, "{{ latest_version('gen_smtp') }}"},
       {% endif -%}
     ]
   end

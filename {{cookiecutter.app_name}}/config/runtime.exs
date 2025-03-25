@@ -1,5 +1,30 @@
 import Config
 
+import Dotenvy
+
+if config_env() != :test do
+  env_dir_prefix = System.get_env("RELEASE_ROOT") || Path.expand("./")
+
+  source!([
+    Path.absname(".env", env_dir_prefix),
+    System.get_env()
+  ])
+
+{% if cookiecutter.use_mailer == 'y' -%}
+  config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Mailer,
+    adapter: Swoosh.Adapters.SMTP,
+    relay: env!("EMAIL_HOST", :string!),
+    port: env!("EMAIL_PORT", :integer!),
+    username: env!("EMAIL_USERNAME", :string!),
+    password: env!("EMAIL_PASSWORD", :string!),
+    ssl: false,
+    tls: :never,
+    auth: :always,
+    retries: 2,
+    no_mx_lookup: false
+{% endif -%}
+end
+
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
 # system starts, so it is typically used to load production configuration

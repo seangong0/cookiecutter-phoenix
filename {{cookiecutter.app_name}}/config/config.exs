@@ -25,6 +25,10 @@ config :{{ cookiecutter.app_name }}, Oban,
   prefix: "oban"
 {% endif -%}
 
+{% if cookiecutter.use_mailer == 'y' -%}
+config :swoosh, :api_client, false
+{% endif -%}
+
 # Configures the endpoint
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}Web.Endpoint,
   url: [host: "localhost"],
