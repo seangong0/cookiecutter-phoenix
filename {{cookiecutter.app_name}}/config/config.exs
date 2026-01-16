@@ -11,6 +11,7 @@ config :{{ cookiecutter.app_name }},
   ecto_repos: [{{ cookiecutter.app_module }}.Repo],
   generators: [timestamp_type: :utc_datetime_usec]
 
+# 些配置只会影响 migrations 生成
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   migration_primary_key: [name: :id, type: :binary_id],
   migration_foreign_key: [column: :id, type: :binary_id],
