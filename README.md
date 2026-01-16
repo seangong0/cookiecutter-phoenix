@@ -66,5 +66,5 @@ mod: {{'{'}}{{ cookiecutter.app_module }}.Application, []{{'}'}}
 ```bash
 #  请注意您的当前目录下不存在相同的项目名称
 rm -rf my_app
-cookiecutter ./cookiecutter-phoenix --no-input use_oban=y use_sqlite=y
+cookiecutter ./cookiecutter-phoenix --no-input se_sqlite=y
 ```
