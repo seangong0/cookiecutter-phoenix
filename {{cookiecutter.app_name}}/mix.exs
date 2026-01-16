@@ -32,13 +32,17 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.19"},
-      {:phoenix_ecto, "~> 4.5"},
-      {:ecto_sql, "~> 3.10"},
-      {:postgrex, ">= 0.0.0"},
-      {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.5"},
+      {:phoenix, "~> 1.8"},
+      {:phoenix_ecto, "~> 4.7"},
+      {:ecto_sql, "~> 3.13"},
+      {% if cookiecutter.use_sqlite == 'y' -%}
+      {:ecto_sqlite3, "{{ latest_version('ecto_sqlite3') }}"},
+      {% else -%}
+      {:postgrex, "~> 1.0"},
+      {% endif -%}
+      {:jason, "~> 1.5"},
+      {:dns_cluster, "~> 0.2"},
+      {:bandit, "~> 1.10"},
       {:dotenvy, "{{ latest_version('dotenvy') }}"},
       {% if cookiecutter.use_oban == 'y' -%}
       {:oban, "{{ latest_version('oban') }}"},
