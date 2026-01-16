@@ -9,7 +9,7 @@ defmodule {{ cookiecutter.app_module }}.Application do
   def start(_type, _args) do
     children = [
       {{ cookiecutter.app_module }}.Repo,
-      {% if cookiecutter.use_oban == 'y' -%}
+      {% if cookiecutter.use_sqlite == 'n' and cookiecutter.use_oban == 'y' -%}
       {Oban, Application.fetch_env!(:{{ cookiecutter.app_name }}, Oban)},
       {% endif -%}
       {{ '{' }}DNSCluster, query: Application.get_env(:{{ cookiecutter.app_name }}, :dns_cluster_query) || :ignore{{ '}' }},

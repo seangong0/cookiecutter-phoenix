@@ -16,15 +16,13 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   migration_foreign_key: [column: :id, type: :binary_id],
   migration_timestamps: [type: :utc_datetime_usec]
 
-{% if cookiecutter.use_oban == 'y' -%}
+{% if cookiecutter.use_sqlite == 'n' and cookiecutter.use_oban == 'y' -%}
 # config Oban
 config :{{ cookiecutter.app_name }}, Oban,
   engine: Oban.Engines.Basic,
   queues: [default: 10],
   repo: {{ cookiecutter.app_module }}.Repo,
-  {% if cookiecutter.use_sqlite == 'n' -%}
   prefix: "oban"
-  {% endif -%}
 {% endif -%}
 
 {% if cookiecutter.use_mailer == 'y' -%}

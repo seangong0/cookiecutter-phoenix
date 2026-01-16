@@ -40,11 +40,11 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
       {% else -%}
       {:postgrex, "~> 1.0"},
       {% endif -%}
-      {:jason, "~> 1.5"},
+      {:jason, "~> 1.4"},
       {:dns_cluster, "~> 0.2"},
       {:bandit, "~> 1.10"},
       {:dotenvy, "{{ latest_version('dotenvy') }}"},
-      {% if cookiecutter.use_oban == 'y' -%}
+      {% if cookiecutter.use_sqlite == 'n' and cookiecutter.use_oban == 'y' -%}
       {:oban, "{{ latest_version('oban') }}"},
       {% endif -%}
       {% if cookiecutter.use_mailer == 'y' -%}
