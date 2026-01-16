@@ -22,7 +22,9 @@ config :{{ cookiecutter.app_name }}, Oban,
   engine: Oban.Engines.Basic,
   queues: [default: 10],
   repo: {{ cookiecutter.app_module }}.Repo,
+  {% if cookiecutter.use_sqlite == 'n' -%}
   prefix: "oban"
+  {% endif -%}
 {% endif -%}
 
 {% if cookiecutter.use_mailer == 'y' -%}

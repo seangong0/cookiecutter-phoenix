@@ -1,6 +1,11 @@
 import Config
 
 # Configure your database
+{% if cookiecutter.use_sqlite == 'y' -%}
+config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
+  database: Path.expand("priv/repo/{{ cookiecutter.app_name }}_dev.db"),
+  pool_size: 5
+{% else -%}
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   username: "postgres",
   password: "postgres",
@@ -9,6 +14,7 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
+{% endif -%}
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

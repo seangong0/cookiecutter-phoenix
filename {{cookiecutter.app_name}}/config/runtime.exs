@@ -46,6 +46,17 @@ if System.get_env("PHX_SERVER") do
 end
 
 if config_env() == :prod do
+  {% if cookiecutter.use_sqlite == 'y' -%}
+  database_path =
+    System.get_env("DATABASE_PATH") ||
+      raise """
+      environment variable DATABASE_PATH is missing.
+      For example: /path/to/{{ cookiecutter.app_name }}.db
+      """
+
+  config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
+    database: database_path
+  {% else -%}
   database_url =
     System.get_env("DATABASE_URL") ||
       raise """
@@ -60,6 +71,7 @@ if config_env() == :prod do
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
     socket_options: maybe_ipv6
+  {% endif -%}
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you

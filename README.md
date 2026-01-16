@@ -1,6 +1,6 @@
 # Cookiecutter Phoenix
 
-Cookiecutter phoenix app template
+Cookiecutter phoenix api template
 
 ## Usage
 

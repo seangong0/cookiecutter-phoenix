@@ -1,15 +1,14 @@
 {
-    "app_name": "my_app",
-    "app_module": "{{ cookiecutter.app_name | replace('_', ' ') | title | replace(' ', '') }}",
-    "author_name": "Sean Gong",
-    "app_version": "0.1.0",
-    "elixir_version": "1.18.2-otp-27",
-    "erlang_version": "27.2.4",
-    "use_oban": "y",
-    "use_req": "n",
-    "use_mailer": "n",
-    "run_setup": "n",
-    "_extensions": [
-        "local_extensions.CustomExtension"
-    ]
+  "app_name": "my_app",
+  "app_module": "{{ cookiecutter.app_name | replace('_', ' ') | title | replace(' ', '') }}",
+  "author_name": "Sean Gong",
+  "app_version": "0.1.0",
+  "elixir_version": "1.19.5-otp-28",
+  "erlang_version": "28.3.1",
+  "use_sqlite": "n",
+  "use_oban": "y",
+  "use_req": "n",
+  "use_mailer": "n",
+  "run_setup": "n",
+  "_extensions": ["local_extensions.CustomExtension"]
 }

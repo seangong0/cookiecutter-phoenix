@@ -5,6 +5,12 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
+{% if cookiecutter.use_sqlite == 'y' -%}
+config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
+  database: Path.expand("priv/repo/{{ cookiecutter.app_name }}_test#{System.get_env("MIX_TEST_PARTITION")}.db"),
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 5
+{% else -%}
 config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   username: "postgres",
   password: "postgres",
@@ -12,6 +18,7 @@ config :{{ cookiecutter.app_name }}, {{ cookiecutter.app_module }}.Repo,
   database: "{{ cookiecutter.app_name }}_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
+{% endif -%}
 
 {% if cookiecutter.use_oban == 'y' -%}
 # config Oban
