@@ -38,7 +38,7 @@ defmodule {{ cookiecutter.app_module }}.MixProject do
       {% if cookiecutter.use_sqlite == 'y' -%}
       {:ecto_sqlite3, "{{ latest_version('ecto_sqlite3') }}"},
       {% else -%}
-      {:postgrex, "~> 1.0"},
+      {:postgrex, "~> 0.22},
       {% endif -%}
       {:jason, "~> 1.4"},
       {:dns_cluster, "~> 0.2"},
